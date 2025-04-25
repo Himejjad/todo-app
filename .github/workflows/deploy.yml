@@ -13,15 +13,23 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy Backend to Render
-        uses: renderinc/action-deploy@v1
-        with:
-          service_id: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
-          api_key: ${{ secrets.RENDER_API_KEY }}
-          directory: backend
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_BACKEND_SERVICE_ID: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
+        run: |
+          curl -X POST \
+          -H "Authorization: Bearer $RENDER_API_KEY" \
+          -H "Content-Type: application/json" \
+          -d '{"serviceId":"$RENDER_BACKEND_SERVICE_ID","clearCache":true}' \
+          https://api.render.com/v1/services/$RENDER_BACKEND_SERVICE_ID/deploys
 
       - name: Deploy Frontend to Render
-        uses: renderinc/action-deploy@v1
-        with:
-          service_id: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
-          api_key: ${{ secrets.RENDER_API_KEY }}
-          directory: frontend
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_FRONTEND_SERVICE_ID: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
+        run: |
+          curl -X POST \
+          -H "Authorization: Bearer $RENDER_API_KEY" \
+          -H "Content-Type: application/json" \
+          -d '{"serviceId":"$RENDER_FRONTEND_SERVICE_ID","clearCache":true}' \
+          https://api.render.com/v1/services/$RENDER_FRONTEND_SERVICE_ID/deploys
