@@ -34,7 +34,7 @@ function App() {
         setTodos([...todos, response.data]);
         setNewTodo('');
       } catch (err) {
-        setError('Failed to add todo. Please try again.');
+        setError('Failed to addd todo. Please try again.');
       } finally {
         setLoading(false);
       }
