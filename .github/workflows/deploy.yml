@@ -1,0 +1,27 @@
+name: Deploy To-Do App to Render
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy Backend to Render
+        uses: renderinc/action-deploy@v1
+        with:
+          service_id: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          directory: backend
+
+      - name: Deploy Frontend to Render
+        uses: renderinc/action-deploy@v1
+        with:
+          service_id: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          directory: frontend
