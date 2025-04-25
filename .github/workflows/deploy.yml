@@ -13,15 +13,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy Backend to Render
-        uses: render-examples/deploy-to-render-action@v1
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
-          path: backend
+          wait-for-success: true
 
       - name: Deploy Frontend to Render
-        uses: render-examples/deploy-to-render-action@v1
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
-          path: frontend
+          wait-for-success: true
