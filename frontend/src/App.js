@@ -11,25 +11,25 @@ function App() {
   }, []);
 
   const fetchTodos = async () => {
-    const response = await axios.get('https://todo-app-p5vo.onrender.com/');
+    const response = await axios.get('https://todo-backend-zsok.onrender.com');
     setTodos(response.data);
   };
 
   const addTodo = async () => {
     if (newTodo.trim()) {
-      const response = await axios.post('https://todo-app-p5vo.onrender.com/', { text: newTodo });
+      const response = await axios.post('https://todo-backend-zsok.onrender.com', { text: newTodo });
       setTodos([...todos, response.data]);
       setNewTodo('');
     }
   };
 
   const toggleTodo = async (id, completed) => {
-    const response = await axios.put(`https://todo-app-p5vo.onrender.com/${id}`);
+    const response = await axios.put(`https://todo-backend-zsok.onrender.com${id}`);
     setTodos(todos.map(todo => (todo._id === id ? response.data : todo)));
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`https://todo-app-p5vo.onrender.com/${id}`);
+    await axios.delete(`https://todo-backend-zsok.onrender.com${id}`);
     setTodos(todos.filter(todo => todo._id !== id));
   };
 
