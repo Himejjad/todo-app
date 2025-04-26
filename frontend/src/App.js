@@ -5,73 +5,37 @@ import './App.css';
 function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchTodos();
   }, []);
 
   const fetchTodos = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.get('https://todo-app-p5vo.onrender.com');
-      setTodos(response.data);
-    } catch (err) {
-      setError('Failed to fetch todossssssss. Please try again later.');
-    } finally {
-      setLoading(false);
-    }
+    const response = await axios.get('https://todo-app-p5vo.onrender.com/');
+    setTodos(response.data);
   };
 
   const addTodo = async () => {
     if (newTodo.trim()) {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await axios.post('https://todo-app-p5vo.onrender.com', { text: newTodo });
-        setTodos([...todos, response.data]);
-        setNewTodo('');
-      } catch (err) {
-        setError('Failed to addd todo. Please try again.');
-      } finally {
-        setLoading(false);
-      }
+      const response = await axios.post('https://todo-app-p5vo.onrender.com/', { text: newTodo });
+      setTodos([...todos, response.data]);
+      setNewTodo('');
     }
   };
 
   const toggleTodo = async (id, completed) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.put(`https://todo-app-p5vo.onrender.com${id}`);
-      setTodos(todos.map(todo => (todo._id === id ? response.data : todo)));
-    } catch (err) {
-      setError('Failed to update todo. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    const response = await axios.put(`https://todo-app-p5vo.onrender.com/${id}`);
+    setTodos(todos.map(todo => (todo._id === id ? response.data : todo)));
   };
 
   const deleteTodo = async (id) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await axios.delete(`https://todo-app-p5vo.onrender.com${id}`);
-      setTodos(todos.filter(todo => todo._id !== id));
-    } catch (err) {
-      setError('Failed to delete todo. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    await axios.delete(`https://todo-app-p5vo.onrender.com/${id}`);
+    setTodos(todos.filter(todo => todo._id !== id));
   };
 
   return (
     <div className="App">
       <h1>To-Do List</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <div>
         <input
           type="text"
