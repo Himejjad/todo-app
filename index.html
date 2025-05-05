@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter to Love</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.5/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'RomanticFont';
+      src: url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+    }
+    body {
+      background: linear-gradient(to bottom, #ffccd5, #fff1cc);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: 'Sacramento', cursive;
+      position: relative;
+      overflow: hidden;
+    }
+    .flower {
+      position: absolute;
+      color: #ff9999;
+      font-size: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    .sparkle {
+      position: absolute;
+      color: #ffd700;
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+    .heart-pulse {
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    .letter-container {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+    .button-container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      position: relative;
+    }
+    .take-yours-btn {
+      background: linear-gradient(to right, #ff6f91, #ff9999);
+      padding: 1rem 2rem;
+      font-size: 2rem;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .take-yours-btn:hover {
+      transform: scale(1.05);
+    }
+    .code-input {
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      border-radius: 0.5rem;
+      border: 2px solid #ff9999;
+      margin-top: 1rem;
+      text-align: center;
+      font-family: 'Sacramento', cursive;
+    }
+    .error-message {
+      color: #ff4040;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    audio {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <audio controls autoPlay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/11/29/audio_d0e2c7a2ef.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script type="text/babel">
+    const Letter = () => {
+      return (
+        <div className="relative bg-white bg-opacity-30 p-10 rounded-2xl letter-container max-w-lg text-center">
+          <h1 className="text-5xl mb-6 text-red-400">My Eternal Love,</h1>
+          <p className="text-2xl leading-relaxed text-red-600">
+            My dearest Asmaa,
+
+You are the light of my heart.
+We’ve faced storms and challenges, yet our love remains as steady and bright as the stars.
+
+Work may pull me away at times, but know that every day, I fight to make space for you — my peace, my home.
+
+I promise you, Asmaa, my love for you will never fade. With every breath, it grows deeper, stronger, and more eternal.
+          </p>
+          <p className="text-3xl mt-8 text-red-400">Forever bound to you,</p>
+          <p className="text-4xl text-red-500">Your Admirer</p>
+          {/* Hearts around the letter */}
+          <div className="absolute top-0 left-0 transform -translate-x-6 -translate-y-6 text-pink-500 text-5xl heart-pulse">♥</div>
+          <div className="absolute bottom-0 right-0 transform translate-x-6 translate-y-6 text-pink-500 text-5xl heart-pulse">♥</div>
+          <div className="absolute top-0 right-0 transform translate-x-6 -translate-y-6 text-pink-400 text-4xl heart-pulse">♡</div>
+          <div className="absolute bottom-0 left-0 transform -translate-x-6 translate-y-6 text-pink-400 text-4xl heart-pulse">♡</div>
+          <div className="absolute top-1/2 left-0 transform -translate-x-8 text-pink-300 text-3xl heart-pulse">♥</div>
+          <div className="absolute top-1/2 right-0 transform translate-x-8 text-pink-300 text-3xl heart-pulse">♥</div>
+          <div className="absolute top-1/4 left-1/4 transform -translate-x-4 -translate-y-4 text-pink-200 text-2xl heart-pulse">♡</div>
+          <div className="absolute bottom-1/4 right-1/4 transform translate-x-4 translate-y-4 text-pink-200 text-2xl heart-pulse">♡</div>
+          {/* Flowers around the letter */}
+          <div className="absolute top-0 left-1/2 transform -translate-y-12 text-3xl">🌸</div>
+          <div className="absolute bottom-0 left-1/2 transform translate-y-12 text-3xl">🌸</div>
+          <div className="absolute top-1/3 left-0 transform -translate-x-10 text-2xl">🌷</div>
+          <div className="absolute bottom-1/3 right-0 transform translate-x-10 text-2xl">🌷</div>
+        </div>
+      );
+    };
+
+    const App = () => {
+      const [showCodeInput, setShowCodeInput] = React.useState(false);
+      const [code, setCode] = React.useState('');
+      const [error, setError] = React.useState('');
+      const [showLetter, setShowLetter] = React.useState(false);
+
+      const handleButtonClick = () => {
+        setShowCodeInput(true);
+      };
+
+      const handleCodeChange = (e) => {
+        setCode(e.target.value);
+        setError('');
+      };
+
+      const handleCodeSubmit = (e) => {
+        if (e.key === 'Enter') {
+          if (code === '4213') {
+            setShowLetter(true);
+          } else {
+            setError('Incorrect code. Please try again.');
+            setCode('');
+          }
+        }
+      };
+
+      return (
+        <>
+          {!showLetter ? (
+            <div className="button-container">
+              {!showCodeInput ? (
+                <>
+                  <button className="take-yours-btn" onClick={handleButtonClick}>
+                    Take Yours
+                  </button>
+                  {/* Decorations around the button */}
+                  <div className="absolute top-0 left-0 transform -translate-x-6 -translate-y-6 text-pink-500 text-4xl heart-pulse">♥</div>
+                  <div className="absolute bottom-0 right-0 transform translate-x-6 translate-y-6 text-pink-500 text-4xl heart-pulse">♥</div>
+                  <div className="absolute top-0 left-1/2 transform -translate-y-10 text-3xl">🌸</div>
+                  <div className="absolute bottom-0 left-1/2 transform translate-y-10 text-3xl">🌸</div>
+                </>
+              ) : (
+                <div>
+                  <input
+                    type="text"
+                    className="code-input"
+                    placeholder="Enter code"
+                    value={code}
+                    onChange={handleCodeChange}
+                    onKeyPress={handleCodeSubmit}
+                  />
+                  {error && <p className="error-message">{error}</p>}
+                  {/* Decorations around the input */}
+                  <div className="absolute top-0 left-0 transform -translate-x-6 -translate-y-6 text-pink-500 text-4xl heart-pulse">♥</div>
+                  <div className="absolute bottom-0 right-0 transform translate-x-6 translate-y-6 text-pink-500 text-4xl heart-pulse">♥</div>
+                  <div className="absolute top-0 left-1/2 transform -translate-y-10 text-3xl">🌸</div>
+                  <div className="absolute bottom-0 left-1/2 transform translate-y-10 text-3xl">🌸</div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Letter />
+          )}
+          {/* Background decorations */}
+          <div className="flower" style={{ top: '10%', left: '10%' }}>🌷</div>
+          <div className="flower" style={{ top: '15%', right: '15%' }}>🌹</div>
+          <div className="flower" style={{ bottom: '20%', left: '20%' }}>🌺</div>
+          <div className="flower" style={{ bottom: '10%', right: '10%' }}>🌻</div>
+          <div className="absolute text-pink-400 text-2xl heart-pulse" style={{ top: '5%', left: '30%' }}>♡</div>
+          <div className="absolute text-pink-400 text-3xl heart-pulse" style={{ bottom: '15%', right: '25%' }}>♥</div>
+          <div className="sparkle" style={{ top: '8%', left: '20%' }}>✨</div>
+          <div className="sparkle" style={{ top: '12%', right: '18%' }}>✨</div>
+          <div className="sparkle" style={{ bottom: '18%', left: '15%' }}>✨</div>
+          <div className="sparkle" style={{ bottom: '12%', right: '20%' }}>✨</div>
+          <div className="sparkle" style={{ top: '25%', left: '5%' }}>✨</div>
+          <div className="sparkle" style={{ bottom: '25%', right: '5%' }}>✨</div>
+        </>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
