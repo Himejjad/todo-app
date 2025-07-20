@@ -177,31 +177,6 @@ PORT=5000
 REACT_APP_API_URL=http://localhost:5000/api
 ```
 
-## 🧪 Testing
-
-### Frontend Tests
-```bash
-cd frontend
-npm test
-```
-
-### Backend Tests
-```bash
-cd backend
-npm test
-```
-
-## 🚀 Deployment
-
-### Production Build
-```bash
-# Build all services
-docker-compose -f docker-compose.prod.yml up --build
-
-# Or build individually
-cd frontend && npm run build
-cd backend && npm start
-```
 
 ### Cloud Deployment
 This application can be deployed to various cloud platforms:
