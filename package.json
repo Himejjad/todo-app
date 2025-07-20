@@ -1,5 +1,23 @@
 {
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "A full-stack todo application built with React, Node.js, Express, and MongoDB",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "docker-compose up --build",
+    "start": "docker-compose up",
+    "stop": "docker-compose down",
+    "clean": "docker-compose down -v --remove-orphans"
+  },
+  "keywords": ["todo", "react", "nodejs", "express", "mongodb", "docker"],
+  "author": "Himejjad",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.9.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Himejjad/todo-app.git"
   }
 }

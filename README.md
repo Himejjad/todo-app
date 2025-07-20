@@ -212,20 +212,8 @@ This application can be deployed to various cloud platforms:
 - **Heroku**: Using container deployment
 - **DigitalOcean**: Using App Platform
 
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📝 Development Notes
-
-### Known Issues
-- Frontend currently points to hardcoded external API (needs configuration fix)
-- Test files need updating to reflect actual functionality
-- Backend package.json needs start script
 
 ### Future Enhancements
 - [ ] User authentication
@@ -261,21 +249,11 @@ This application can be deployed to various cloud platforms:
    - Check CORS configuration
    - Verify API URLs in frontend code
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
 **Himejjad**
 - GitHub: [@Himejjad](https://github.com/Himejjad)
-
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- Express.js community
-- MongoDB team
-- Docker team for containerization tools
 
 ---
 
